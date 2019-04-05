@@ -114,8 +114,7 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
 
         $model = Mockery::mock('Illuminate\Database\Eloquent\Model');
         $model->shouldReceive('getScoutKey')->andReturn('1');
-        $model->shouldReceive('getScoutModelsByIds')->once()->with($builder, ['1'])->andReturn($models = Collection::make([$model]));
-        $model->shouldReceive('newCollection')->andReturn($models);
+        $model->shouldReceive('getScoutModelsByIds')->once()->with($builder, ['1'])->andReturn(Collection::make([$model]));
 
         $results = $engine->map($builder, [
             'hits' => [
